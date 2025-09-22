@@ -14,18 +14,9 @@
   };
 
   outputs =
+    { ... }:
     {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeManagerModules = {
+      nixosModules = {
         default =
           {
             config,
@@ -34,18 +25,33 @@
             ...
           }:
           {
-            imports = [ ./modules/home-manager ];
+            # TODO: add modules/nixos/default.nix import
+            #
             options.nyxed = (import ./config.nix lib).nyxedOptions;
+
+            config = {
+              nixpkgs.config.allowUnfree = true;
+            };
           };
       };
 
-      homeConfigurations."devyn" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
+      homeManagerModules = {
+        default =
+          {
+            config,
+            lib,
+            pkgs,
+            osConfig ? { },
+            ...
+          }:
+          {
+            imports = [ ./modules/home-manager ];
 
-        modules = [
-          self.homeManagerModules.default
-        ];
+            options.nyxed = (import ./config.nix lib).nyxedOptions;
+            config = lib.mkIf (builtins.hasAttr osConfig "nyxed") {
+              nyxed = osConfig.nyxed;
+            };
+          };
       };
     };
 }
