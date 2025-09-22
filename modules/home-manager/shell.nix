@@ -16,6 +16,7 @@
     zip
     unzip
     ripgrep
+    rclone
   ];
 
   # better cd aliased to z
