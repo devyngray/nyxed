@@ -48,7 +48,7 @@
             imports = [ ./modules/home-manager ];
 
             options.nyxed = (import ./config.nix lib).nyxedOptions;
-            config = lib.mkIf (builtins.hasAttr osConfig "nyxed") {
+            config = lib.mkIf (builtins.hasAttr "nyxed" osConfig) {
               nyxed = osConfig.nyxed;
             };
           };
