@@ -25,31 +25,13 @@
             ...
           }:
           {
-            # TODO: add modules/nixos/default.nix import
-            #
-            options.nyxed = (import ./config.nix lib).nyxedOptions;
+            imports = [
+              ./modules/nixos/default.nix
+            ];
 
+            options.nyxed = (import ./config.nix lib).nyxedOptions;
             config = {
               nixpkgs.config.allowUnfree = true;
-            };
-          };
-      };
-
-      homeManagerModules = {
-        default =
-          {
-            config,
-            lib,
-            pkgs,
-            osConfig ? { },
-            ...
-          }:
-          {
-            imports = [ ./modules/home-manager ];
-
-            options.nyxed = (import ./config.nix lib).nyxedOptions;
-            config = lib.mkIf (builtins.hasAttr "nyxed" osConfig) {
-              nyxed = osConfig.nyxed;
             };
           };
       };
