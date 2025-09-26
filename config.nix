@@ -1,5 +1,10 @@
 lib: {
   nyxedOptions = {
+    username = lib.mkOption {
+      type = lib.types.str;
+      default = "devyn";
+      description = "Linux username";
+    };
     vcs_name = lib.mkOption {
       type = lib.types.str;
       default = "Devyn Gray";

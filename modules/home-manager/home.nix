@@ -1,9 +1,12 @@
-{ ... }:
+{ config, ... }:
+let
+  cfg = config.nyxed;
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "devyn";
-  home.homeDirectory = "/home/devyn";
+  home.username = cfg.username;
+  home.homeDirectory = "/home/${cfg.username}";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
