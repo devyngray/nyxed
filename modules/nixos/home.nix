@@ -5,9 +5,6 @@ in
 {
   imports = [ home-manager.nixosModules.home-manager ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -35,14 +32,4 @@ in
   };
 
   nix.settings.allowed-users = [ "${nyxed.username}" ];
-
-  services = {
-    desktopManager.plasma6.enable = true;
-
-    displayManager.sddm.enable = true;
-
-    displayManager.sddm.wayland.enable = true;
-  };
-
-  system.stateVersion = "25.05";
 }

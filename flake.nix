@@ -33,7 +33,7 @@
         }:
         {
           imports = [
-            ./modules/nixos/configuration.nix
+            ./modules/nixos
           ];
 
           options.nyxed = {
