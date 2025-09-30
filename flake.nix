@@ -47,5 +47,12 @@
           self.homeManagerModules.default
         ];
       };
+
+      nixosConfigurations.test = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./modules/nixos/configuration.nix
+        ];
+      };
     };
 }
