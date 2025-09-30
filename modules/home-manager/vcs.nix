@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
-let
-  cfg = config.nyxed;
-in
+{ pkgs, nyxed, ... }:
 {
   # install git
   home.packages = [
@@ -16,8 +13,8 @@ in
   # configure jj
   programs.jujutsu.settings = {
     user = {
-      name = cfg.vcs_name;
-      email = cfg.vcs_email;
+      name = nyxed.vcs_name;
+      email = nyxed.vcs_email;
     };
 
     ui = {
