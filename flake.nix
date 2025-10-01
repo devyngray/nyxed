@@ -11,6 +11,7 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
@@ -18,6 +19,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixos-hardware,
       ...
     }:
     let
@@ -58,23 +60,26 @@
           config.nixpkgs.config.allowUnfree = true;
         };
 
-      nixosConfigurations.test = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit home-manager; };
-        modules = [
-          self.nixosModules.default
-          {
-            nyxed.enableKDEPlasma = true;
+      nixosConfigurations = {
+        blue = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit home-manager nixos-hardware; };
+          modules = [
+            self.nixosModules.default
+            ./hosts/blue
+            {
+              nyxed.enableKDEPlasma = true;
 
-            virtualisation.vmVariant = {
-              virtualisation = {
-                memorySize = 4096;
-                cores = 4;
-                graphics = true;
+              virtualisation.vmVariant = {
+                virtualisation = {
+                  memorySize = 4096;
+                  cores = 4;
+                  graphics = true;
+                };
               };
-            };
-          }
-        ];
+            }
+          ];
+        };
       };
     };
 }

@@ -27,7 +27,7 @@ in
       "networkmanager"
       "wheel"
     ];
-    password = "changeme";
+    initialPassword = "changeme";
     group = "${nyxed.username}";
   };
 
