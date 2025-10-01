@@ -13,8 +13,8 @@
   # configure jj
   programs.jujutsu.settings = {
     user = {
-      name = nyxed.vcs_name;
-      email = nyxed.vcs_email;
+      name = nyxed.vcsName;
+      email = nyxed.vcsEmail;
     };
 
     ui = {
