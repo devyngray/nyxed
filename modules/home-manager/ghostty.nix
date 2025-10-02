@@ -6,15 +6,16 @@
       theme = "GruvboxDark";
       mouse-hide-while-typing = true;
       keybind = [
-        "alt+h=goto_split:left"
-        "alt+l=goto_split:right"
-        "alt+j=goto_split:down"
-        "alt+k=goto_split:up"
+        "ctrl+b>h=goto_split:left"
+        "ctrl+b>l=goto_split:right"
+        "ctrl+b>j=goto_split:down"
+        "ctrl+b>k=goto_split:up"
 
-        "ctrl+b>h=new_split:left"
-        "ctrl+b>l=new_split:right"
-        "ctrl+b>j=new_split:down"
-        "ctrl+b>k=new_split:up"
+        "ctrl+b>shift+h=new_split:left"
+        "ctrl+b>shift+l=new_split:right"
+        "ctrl+b>shift+j=new_split:down"
+        "ctrl+b>shift+k=new_split:up"
+
         "ctrl+b>z=toggle_split_zoom"
 
         "ctrl+b>c=new_tab"
