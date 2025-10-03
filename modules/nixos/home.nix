@@ -1,4 +1,9 @@
-{ config, home-manager, ... }:
+{
+  config,
+  home-manager,
+  plasma-manager,
+  ...
+}:
 let
   nyxed = config.nyxed;
 in
@@ -8,6 +13,7 @@ in
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
+    sharedModules = [ plasma-manager.homeModules.plasma-manager ];
     extraSpecialArgs = {
       inherit nyxed;
     };

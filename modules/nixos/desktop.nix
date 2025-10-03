@@ -3,7 +3,7 @@ let
   nyxed = config.nyxed;
 in
 {
-  services = lib.mkIf nyxed.enableKDEPlasma {
+  services = lib.mkIf nyxed.desktop {
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
