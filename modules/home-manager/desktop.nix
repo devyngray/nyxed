@@ -63,13 +63,29 @@
       };
     };
 
+    session = {
+      general.askForConfirmationOnLogout = false;
+      sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
+    };
+
     shortcuts = {
       kwin = {
+        "KrohnkiteFocusLeft" = "Alt+H";
+        "KrohnkiteFocusUp" = "Alt+K";
+        "KrohnkiteFocusDown" = "Alt+J";
+        "KrohnkiteFocusRight" = "Alt+L";
+
+        "KrohnkiteShiftLeft" = "Alt+Shift+H";
+        "KrohnkiteShiftUp" = "Alt+Shift+K";
+        "KrohnkiteShiftDown" = "Alt+Shift+J";
+        "KrohnkiteShiftRight" = "Alt+Shift+L";
+
         "Switch to Desktop 1" = "Alt+1";
         "Switch to Desktop 2" = "Alt+2";
         "Switch to Desktop 3" = "Alt+3";
         "Switch to Desktop 4" = "Alt+4";
         "Switch to Desktop 5" = "Alt+5";
+
         "Window Close" = "Alt+Q";
       };
     };
