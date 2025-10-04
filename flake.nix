@@ -8,9 +8,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
@@ -19,6 +23,7 @@
       self,
       nixpkgs,
       home-manager,
+      plasma-manager,
       nixos-hardware,
       ...
     }:
@@ -39,7 +44,7 @@
           ];
 
           options.nyxed = {
-            enableKDEPlasma = lib.mkEnableOption "Use KDE plasma desktop environment";
+            desktop = lib.mkEnableOption "Use KDE plasma desktop environment";
             username = lib.mkOption {
               type = lib.types.str;
               default = "devyn";
@@ -63,12 +68,12 @@
       nixosConfigurations = {
         blue = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit home-manager nixos-hardware; };
+          specialArgs = { inherit home-manager plasma-manager nixos-hardware; };
           modules = [
             self.nixosModules.default
             ./hosts/blue
             {
-              nyxed.enableKDEPlasma = true;
+              nyxed.desktop = true;
 
               virtualisation.vmVariant = {
                 virtualisation = {

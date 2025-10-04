@@ -1,10 +1,11 @@
 { ... }:
 {
   imports = [
-    ./shell.nix
+    ./desktop.nix
+    ./ghostty.nix
     ./helix.nix
     ./home.nix
-    ./ghostty.nix
+    ./shell.nix
     ./vcs.nix
   ];
 }
