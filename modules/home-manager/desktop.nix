@@ -70,6 +70,8 @@
 
     shortcuts = {
       kwin = {
+        "KrohnkiteMonocleLayout" = "Alt+M";
+
         "KrohnkiteFocusLeft" = "Alt+H";
         "KrohnkiteFocusUp" = "Alt+K";
         "KrohnkiteFocusDown" = "Alt+J";
