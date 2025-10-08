@@ -5,6 +5,9 @@
   home.shellAliases = {
     ls = "eza";
   };
+  home.sessionVariables = {
+    PAGER = "less -F";
+  };
 
   home.packages = with pkgs; [
     # global python for repl
